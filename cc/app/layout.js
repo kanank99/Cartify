@@ -13,7 +13,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className='box-border'>
-      <body className={inter.className}>
+      <body className='flex flex-col items-center'>
         <Header />
         {children}
       </body>

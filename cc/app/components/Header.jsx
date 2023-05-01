@@ -3,10 +3,19 @@ import React from 'react'
 
 function Header() {
   return (
-    <div className='bg-gradient-to-r from-[#18122B] to-[#393053] flex justify-between items-center h-24 pl-5 pr-5'>
-        <div><img src='/images/dropdown-icon.png' alt='Dropdown-Icon' width='30' height='30' /></div>
-        <div className='flex items-center gap-2 font-Sanchez tracking-wide'> <div>COSMIC </div> <img src="/images/logo.png" alt="cosmic" className=' w-7 h-7' /> <div> CORNER</div></div>
-        <div><img src='/images/cart-icon.png' alt='Cart-Icon' width='30' height='30' /></div>
+    <div className=' h-28 pl-8 pr-8 w-full flex justify-center shadow-[0_15px_10px_-15px_#111;] fixed'>
+      <div className='max-w-screen-xl flex justify-between items-center w-full'>
+        <div className='flex gap-3 items-center'>
+          <img src="/images/cartifyCartLogo.png" alt="Logo" width='30' height='30'/>
+          <p className='font-sanchez font-medium text-[#e78200] text-base sm:text-xl'>Cartify</p>
+        </div>
+        <div className='flex gap-7 items-center'>
+            <a className='hidden sm:block font-medium' href="/">CATEGORIES</a>
+            <a className='hidden sm:block font-medium' href="/">PRODUCT PAGE</a>
+            <img className='sm:hidden' src='/images/dropdown-icon.png' alt='Dropdown-Icon' width='30' height='30' />
+            <img className='hidden sm:block' src='/images/cart-icon.png' alt='Cart-Icon' width='30' height='30'/>
+        </div>
+      </div>
     </div>
   )
 }
