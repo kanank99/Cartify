@@ -1,4 +1,5 @@
 import React from 'react' 
+import Link from 'next/link'
 
 
 function Header() {
@@ -10,7 +11,7 @@ function Header() {
           <p className='font-sanchez font-medium text-[#e78200] text-base sm:text-xl'>Cartify</p>
         </div>
         <div className='flex gap-7 items-center'>
-            <a className='hidden sm:block font-medium' href="/">CATEGORIES</a>
+            <Link className='hidden sm:block font-medium' href={`/categories/all`}>CATEGORIES</Link>
             <a className='hidden sm:block font-medium' href="/">PRODUCT PAGE</a>
             <img className='sm:hidden' src='/images/dropdown-icon.png' alt='Dropdown-Icon' width='30' height='30' />
             <img className='hidden sm:block' src='/images/cart-icon.png' alt='Cart-Icon' width='30' height='30'/>

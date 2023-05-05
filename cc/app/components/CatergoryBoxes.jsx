@@ -11,8 +11,8 @@ function CatergoryBoxes() {
             <p className='absolute bottom-2 left-2 text-white text-2xl brightness-150'>Jewelery</p>
             </div>
         </div>
-        <div className='flex gap-3 sm:flex-col sm:w-4/12 sm:pr-8'> x
-            <div className='relative h-64 bg-[url("/images/mensclothing.jpg")] bg-cover brightness-75 hover:brightness-100 w-full sm:h-1/2'>
+        <div className='flex gap-3 sm:flex-col sm:w-4/12 sm:pr-8'>
+            <div className='relative h-64 bg-[url("/images/mensclothing.jpg")] bg-cover brightness-75 w-full sm:h-1/2'>
             <p className='absolute bottom-2 left-2 text-white text-2xl z-10'>Men's</p>
             </div>
             <div className='relative h-64 bg-[url("/images/womensclothing.jpg")] bg-cover brightness-75 w-full sm:h-1/2'>
