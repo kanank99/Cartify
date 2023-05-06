@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Home({ params }) {
-    const category = params.id.toUpperCase()
+  const category = params.id.toUpperCase()
   return (
     <div className='w-full max-w-screen-xl h-screen pt-28 flex flex-col'>
       <Link href={`/`}>
@@ -12,23 +12,23 @@ export default function Home({ params }) {
       <b className=' text-center text-3xl block'>{category}</b>
       <div className='mt-6 flex flex-wrap items-center justify-center gap-4'>
         <Link href={`/categories/all`}>
-            <div className='border border-amber-600 hover:bg-[#e78200d1] rounded pl-4 pr-4 pt-1 pb-1'>All</div>
+          <div className='border border-amber-600 hover:bg-[#e78200d1] rounded pl-4 pr-4 pt-1 pb-1'>All</div>
         </Link>
         <Link href={`/categories/electronics`}>
-            <div className='border border-amber-600 hover:bg-[#e78200d1] rounded pl-4 pr-4 pt-1 pb-1'>Electronics</div>
+          <div className='border border-amber-600 hover:bg-[#e78200d1] rounded pl-4 pr-4 pt-1 pb-1'>Electronics</div>
         </Link>
         <Link href={`/categories/jewelery`}>
-            <div className='border border-amber-600 hover:bg-[#e78200d1] rounded pl-4 pr-4 pt-1 pb-1'>Jewelery</div>
+          <div className='border border-amber-600 hover:bg-[#e78200d1] rounded pl-4 pr-4 pt-1 pb-1'>Jewelery</div>
         </Link>
         <Link href={`/categories/men's clothing`}>
-            <div className='border border-amber-600 hover:bg-[#e78200d1] rounded pl-4 pr-4 pt-1 pb-1'>Men's</div>
+          <div className='border border-amber-600 hover:bg-[#e78200d1] rounded pl-4 pr-4 pt-1 pb-1'>Men's</div>
         </Link>
         <Link href={`/categories/women's clothing`}>
-            <div className='border border-amber-600 hover:bg-[#e78200d1] rounded pl-4 pr-4 pt-1 pb-1'>Women's</div>
+          <div className='border border-amber-600 hover:bg-[#e78200d1] rounded pl-4 pr-4 pt-1 pb-1'>Women's</div>
         </Link>
       </div>
-      <RenderCategory id={params.id}/>
+      <RenderCategory id={params.id} />
     </div>
-    
+
   )
 }
