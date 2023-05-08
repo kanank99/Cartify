@@ -5,7 +5,7 @@ import Link from 'next/link'
 export default function Home({ params }) {
   const category = params.id.toUpperCase()
   return (
-    <div className='w-full max-w-screen-xl h-screen pt-28 flex flex-col'>
+    <div className='w-full max-w-screen-xl pt-28 flex flex-col h-full'>
       <Link href={`/`}>
         <p className='mt-4 ml-8 mb-2 sm:ml-12 sm:mb-6'>Home</p>
       </Link>

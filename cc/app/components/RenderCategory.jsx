@@ -13,15 +13,17 @@ async function RenderCategory(props) {
   return (
     <div className="flex flex-wrap justify-center gap-5 mt-8">
       {categoryProducts.map((product) => (
-        <div key={product.id} className='flex flex-col place-content-between items-center gap-3 p-4 bg-white rounded border-4 border-[#cbcbcb] hover:border-black w-80'>
-          <div className="h-80 bg-white">
-            <img className="w-full h-80 p-4" src={product.image} alt="product-img" />
+        <Link href={`/product/${product.id}`}>
+          <div key={product.id} className='flex flex-col place-content-between items-center gap-3 p-4 bg-white rounded border-4 border-[#cbcbcb] hover:border-[#e78200d1] w-80'>
+            <div className="h-80 bg-white">
+              <img className="w-full h-80 p-4" src={product.image} alt="product-img" />
+            </div>
+            <div className="self-start">
+              <p className='font-light text-sm bg-white'>{product.title}</p>
+              <p className='text-xl font-medium bg-white'>${product.price}</p>
+            </div>
           </div>
-          <div className="self-start">
-            <p className='text-2xl font-light text-sm bg-white'>{product.title}</p>
-            <p className='text-xl font-medium bg-white'>${product.price}</p>
-          </div>
-        </div>
+        </Link>
       ))}
     </div>
 
