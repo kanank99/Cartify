@@ -9,7 +9,6 @@ async function RenderCategory(props) {
     return await res.json()
   }
   const categoryProducts = await getCategoryProducts()
-  //   console.log(categoryProducts)
   return (
     <div className="flex flex-wrap justify-center gap-5 mt-8">
       {categoryProducts.map((product) => (
