@@ -1,5 +1,5 @@
 import RenderCategory from '@/app/components/renderCategory'
-import Image from 'next/image'
+import RenderAll from '@/app/components/renderAll'
 import Link from 'next/link'
 
 export default function Home({ params }) {
@@ -27,7 +27,7 @@ export default function Home({ params }) {
           <div className='border border-amber-600 hover:bg-[#e78200d1] rounded pl-4 pr-4 pt-1 pb-1'>Women's</div>
         </Link>
       </div>
-      <RenderCategory id={params.id} />
+      {params.id === 'all' ? <RenderAll /> : <RenderCategory id={params.id} />}
     </div>
 
   )
