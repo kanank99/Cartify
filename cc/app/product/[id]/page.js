@@ -1,4 +1,7 @@
+'use client'
+
 import Quantity from "@/app/components/Quantity"
+import { loadStripe } from "@stripe/stripe-js"
 
 export default async function Home({ params }) {
   async function getProduct() {
@@ -6,6 +9,124 @@ export default async function Home({ params }) {
     return await res.json()
   }
   const product = await getProduct()
+
+  let itemParam;
+
+  if (params.id === '1') {
+    itemParam = {
+      price: 'price_1N6H96LVw56XMgIANSSpWS1Y',
+    }
+  } else if (params.id === '2') {
+    itemParam = {
+      price: 'price_1N6HAVLVw56XMgIAKRZsmEA4',
+    }
+  } else if (params.id === '3') {
+    itemParam = {
+      price: 'price_1N6HBOLVw56XMgIAtvQWqaNF',
+    }
+  } else if (params.id === '4') {
+    itemParam = {
+      price: 'price_1N6HCFLVw56XMgIAiWlJqvvl',
+    }
+  } else if (params.id === '5') {
+    itemParam = {
+      price: 'price_1N6HDGLVw56XMgIAC9FcSvqH',
+    }
+  } else if (params.id === '6') {
+    itemParam = {
+      price: 'price_1N6HE6LVw56XMgIAyA6JWoq3',
+    }
+  } else if (params.id === '7') {
+    itemParam = {
+      price: 'price_1N6HFILVw56XMgIAcJBIKjMZ',
+    }
+  } else if (params.id === '8') {
+    itemParam = {
+      price: 'price_1N6HGNLVw56XMgIAUYBVVfhZ',
+    }
+  } else if (params.id === '9') {
+    itemParam = {
+      price: 'price_1N6HHALVw56XMgIAz59l0iD0',
+    }
+  } else if (params.id === '10') {
+    itemParam = {
+      price: 'price_1N6HI0LVw56XMgIAbovVm0mo',
+    }
+  } else if (params.id === '11') {
+    itemParam = {
+      price: 'price_1N6HIwLVw56XMgIAGipbhgow',
+    }
+  } else if (params.id === '12') {
+    itemParam = {
+      price: 'price_1N6HJkLVw56XMgIAKFNQJfmn',
+    }
+  } else if (params.id === '13') {
+    itemParam = {
+      price: 'price_1N6HKiLVw56XMgIAi33zq0xW',
+    }
+  } else if (params.id === '14') {
+    itemParam = {
+      price: 'price_1N6HLaLVw56XMgIAeIdMPYAU',
+    }
+  } else if (params.id === '15') {
+    itemParam = {
+      price: 'price_1N6HMNLVw56XMgIAtnH9D6Jv',
+    }
+  } else if (params.id === '16') {
+    itemParam = {
+      price: 'price_1N6HNVLVw56XMgIA16mL8WSB',
+    }
+  } else if (params.id === '17') {
+    itemParam = {
+      price: 'price_1N6HOXLVw56XMgIAxKj4H3uF',
+    }
+  } else if (params.id === '18') {
+    itemParam = {
+      price: 'price_1N6HPwLVw56XMgIA5ZKnODRq',
+    }
+  } else if (params.id === '19') {
+    itemParam = {
+      price: 'price_1N6HQwLVw56XMgIA8WM8z1TP',
+    }
+  } else if (params.id === '20') {
+    itemParam = {
+      price: 'price_1N6HRpLVw56XMgIA2LllZ1EK',
+    }
+  } 
+
+
+  let stripePromise
+
+  const getStripe = () => {
+    if (!stripePromise) {
+      stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+    }
+    return stripePromise
+  }
+
+
+  const item = {
+    price: itemParam.price,
+    quantity: 1,
+  }
+
+  const checkoutOptions = {
+    lineItems: [item],
+    mode: 'payment',
+    successUrl: `${window.location.origin}/success`,
+    cancelUrl: `${window.location.origin}/cancel`,
+  }
+
+  const redirectToCheckout = async () => {
+    const stripe = await getStripe()
+    const { error } = await stripe.redirectToCheckout(checkoutOptions)
+    if (error) {
+      console.warn('Error:', error)
+    }
+  }
+
+
+
 
   return (
     <div className='w-full max-w-screen-xl pt-28 flex flex-col h-screen mt-8'>
@@ -24,7 +145,7 @@ export default async function Home({ params }) {
                 <Quantity price={product.price} />
                 <div className="flex flex-col justify-center gap-4 text-center">
                     <div className="border border-black p-4 bg-white font-bold">ADD TO CART</div>
-                    <div className="border border-black p-4 bg-black text-[#f4bc88] text-center font-bold">BUY NOW</div>
+                    <div className="border border-black p-4 bg-black text-[#f4bc88] text-center font-bold" onClick={redirectToCheckout}>BUY NOW</div>
                 </div>
             </div>
         </div>
