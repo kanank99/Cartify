@@ -16,7 +16,14 @@ function Header() {
             <Link className='hidden sm:block font-medium' href={`/categories/all`}>CATEGORIES</Link>
             <a className='hidden sm:block font-medium' href="/">PRODUCT PAGE</a>
             <img className='sm:hidden' src='/images/dropdown-icon.png' alt='Dropdown-Icon' width='30' height='30' />
-            <img className='hidden sm:block' src='/images/cart-icon.png' alt='Cart-Icon' width='30' height='30'/>
+            <div className='hidden sm:block relative'>
+              <img src='/images/cartIcon.png' alt='Cart-Icon' width='30' height='30'/>
+              <div className='absolute bottom-5 left-5 h-4 w-4 rounded-full bg-orange-500 flex items-center justify-center'>
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
+                <p className='text-white text-xs text-center font-light'>2</p>
+              </div>
+            </div>
+            
         </div>
       </div>
     </div>
