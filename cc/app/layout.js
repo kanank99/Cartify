@@ -1,3 +1,5 @@
+import Header from './components/Header'
+import { CartContextProvider } from './context/CartContext'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -13,7 +15,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className='box-border bg-white'>
       <body className='flex flex-col items-center bg-white'>
-        {children}
+        <CartContextProvider>
+          <Header />
+          {children}
+        </CartContextProvider>
       </body>
     </html>
   )

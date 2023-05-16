@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 
-async function RenderCategory(props) {
+async function RenderAll(props) {
   async function getAllProducts() {
     const res = await fetch(`https://fakestoreapi.com/products`)
     return await res.json()
@@ -14,8 +14,8 @@ async function RenderCategory(props) {
       {allProducts.map((product) => (
         <Link href={`/product/${product.id}`}>
           <div key={product.id} className='flex flex-col place-content-between items-center gap-3 p-4 bg-white rounded border-4 border-[#cbcbcb] hover:border-[#e78200d1] w-80 h-full'>
-            <div className="h-80 bg-white">
-              <img className="w-full h-80 p-4" src={product.image} alt="product-img" />
+            <div className="h-60 bg-white">
+              <img className="w-full h-full p-4" src={product.image} alt="product-img" />
             </div>
             <div className="self-start">
               <p className='font-light text-sm bg-white'>{product.title}</p>
@@ -29,4 +29,4 @@ async function RenderCategory(props) {
   )
 }
 
-export default RenderCategory
+export default RenderAll

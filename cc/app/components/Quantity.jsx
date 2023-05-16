@@ -2,9 +2,11 @@
 import React from 'react'
 import { useState } from 'react'
 import { loadStripe } from "@stripe/stripe-js"
+import { useCartContext } from '../context/CartContext'
 
 function Quantity(props) {
   const [quantity, setQuantity] = useState(1)
+  const {cartCount, setCartCount} = useCartContext();
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
   };
@@ -13,6 +15,11 @@ function Quantity(props) {
             setQuantity(quantity - 1);
         }
     };
+
+    
+    const addToCart = () => {
+        setCartCount(cartCount + quantity)
+    }
 
     let stripePromise
 
@@ -56,7 +63,7 @@ function Quantity(props) {
             <div className="text-xl">$ <b className="">{(props.price * quantity).toFixed(2)}</b></div>
         </div>
         <div className="flex flex-col justify-center gap-4 text-center">
-            <div className="border border-black p-4 bg-white font-bold">ADD TO CART</div>
+            <div className="border border-black p-4 bg-white font-bold" onClick={addToCart}>ADD TO CART</div>
             <div className="border border-black p-4 bg-black text-[#f4bc88] text-center font-bold" onClick={redirectToCheckout}>BUY NOW</div>
         </div>
     </>

@@ -1,6 +1,5 @@
 'use client'
 
-import Header from "@/app/components/Header"
 import Quantity from "@/app/components/Quantity"
 
 
@@ -103,7 +102,6 @@ export default async function Home({ params }) {
 
   return (
     <>
-      <Header />
       <div className='w-full max-w-screen-xl pt-28 flex flex-col h-screen mt-8'>
           <div className="flex flex-col items-center sm:flex-row w-full gap-8">
               <h1 className="sm:hidden text-center text-2xl font-extrabold pl-4 pr-4">{product.title}</h1>
