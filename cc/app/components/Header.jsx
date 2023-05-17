@@ -39,13 +39,22 @@ function Header() {
         </div>
       </div>
       {showCart ?
-      <div className=' h-screen sm:w-2/3 md:w-1/3 w-full bg-white border border-l-black right-0 fixed z-20 p-5'>
-        <div className='flex justify-between'>
-          <p>You have ## items in your cart</p>
-          <button onClick={() => setShowCart(!showCart)}>X</button>
-        </div>
+      <>
+      <div className='fixed top-0 left-0 w-full h-screen bg-black opacity-30 z-20' onClick={() => setShowCart(!showCart)}></div>
+      <div className=' h-screen sm:w-2/3 md:w-1/3 w-full bg-white border border-l-black right-0 fixed z-50 p-5'>
+        <div className='flex flex-col h-full justify-between'>
+          <div className='flex justify-between'>
+            <p>You have {cartCount} items in your cart</p>
+            <button onClick={() => setShowCart(!showCart)}><img src='/images/closeIcon-light.png' alt='close-cart' width='30' height='30' /></button>
+          </div>
 
+          <div className='h-24 border-t-4 border-t-black border-dotted'>
+
+          </div>
+        </div>
       </div>
+      
+      </>
       : null}
     </>
 

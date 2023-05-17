@@ -14,7 +14,7 @@ async function RenderAll(props) {
       {allProducts.map((product) => (
         <Link href={`/product/${product.id}`}>
           <div key={product.id} className='flex flex-col place-content-between items-center gap-3 p-4 bg-white rounded border-4 border-[#cbcbcb] hover:border-[#e78200d1] w-80 h-full'>
-            <div className="h-60 bg-white">
+            <div className="h-80 bg-white">
               <img className="w-full h-full p-4" src={product.image} alt="product-img" />
             </div>
             <div className="self-start">
