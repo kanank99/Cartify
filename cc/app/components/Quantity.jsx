@@ -8,6 +8,7 @@ function Quantity(props) {
   const [quantity, setQuantity] = useState(1)
   const {cartCount, setCartCount} = useCartContext();
   const {cartItems, setCartItems} = useCartContext();
+  const {subtotal, setSubtotal} = useCartContext();
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
   };
@@ -19,8 +20,22 @@ function Quantity(props) {
 
     
     const addToCart = () => {
+        if (cartItems.some(item => item.title === props.title)) {
+            let index = cartItems.findIndex(item => item.title === props.title)
+            cartItems[index].quantity += quantity
+            setCartCount(cartCount + quantity)
+            setSubtotal((Number(subtotal) + Number(props.price * quantity)).toFixed(2))
+            setCartItems([...cartItems])
+            return
+        }
         setCartCount(cartCount + quantity)
         setCartItems([...cartItems, {title: props.title, price: props.price, image: props.image, quantity: quantity}])
+        setSubtotal((Number(subtotal) + Number(props.price * quantity)).toFixed(2))
+
+
+
+        
+        
     }
 
     let stripePromise

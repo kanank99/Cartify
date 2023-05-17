@@ -115,7 +115,7 @@ export default async function Home({ params }) {
                       <div className="flex flex-col items-center w-1/3 gap-2"><h1>Reviews</h1> <b className="bg-black text-[#f4bc88] w-2/3 text-center pl-2 pr-2 pt-1 pb-1">{product.rating.count}</b></div>
                       <div className="flex flex-col items-center w-1/3 gap-2"><h1>Rating</h1> <b className="bg-black text-[#f4bc88] w-2/3 text-center pl-2 pr-2 pt-1 pb-1">{product.rating.rate}</b></div>
                   </div>
-                  <Quantity price={product.price} img={product.image} title={product.title} productId={params.id} productCode={itemParam.price} />
+                  <Quantity price={product.price} image={product.image} title={product.title} productId={params.id} productCode={itemParam.price} />
 
               </div>
           </div>
