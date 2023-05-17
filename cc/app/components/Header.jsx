@@ -10,6 +10,7 @@ function Header() {
 
   const {cartCount, setCartCount} = useCartContext();
   const [showCart, setShowCart] = useState(false)
+  const {cartItems, setCartItems} = useCartContext();
 
   return (
     <>
@@ -44,9 +45,34 @@ function Header() {
       <div className=' h-screen sm:w-2/3 md:w-1/3 w-full bg-white border border-l-black right-0 fixed z-50 p-5'>
         <div className='flex flex-col h-full justify-between'>
           <div className='flex justify-between'>
-            <p>You have {cartCount} items in your cart</p>
+            <p className='sm:text-2xl'>You have {cartCount} items in your cart</p>
             <button onClick={() => setShowCart(!showCart)}><img src='/images/closeIcon-light.png' alt='close-cart' width='30' height='30' /></button>
           </div>
+
+          { cartCount > 0 ?
+          <div className='flex flex-col gap-5'>
+            {cartItems.map((item) => (
+              <div className='flex justify-between items-center gap-5'>
+                <div className='flex gap-5 items-center'>
+                  <img src={item.image} alt='cart-item' width='100' height='100' />
+                  <div className='flex flex-col'>
+                    <p className='font-sanchez font-medium text-[#e78200] text-base sm:text-xl'>{item.title}</p>
+                    <p className='font-sanchez font-light text-sm sm:text-base'>${item.price}</p>
+                  </div>
+                </div>
+                <div className='flex gap-5 items-center'>
+                  <button className='bg-[#e78200] text-white font-sanchez font-medium text-base sm:text-xl p-2 rounded' onClick={() => setCartCount(cartCount - 1)}>-</button>
+                  <p className='font-sanchez font-medium text-base sm:text-xl'>{item.quantity}</p>
+                  <button className='bg-[#e78200] text-white font-sanchez font-medium text-base sm:text-xl p-2 rounded' onClick={() => setCartCount(cartCount + 1)}>+</button>
+                </div>
+              </div>
+            ))}
+          </div>
+          : <div className='flex flex-col gap-10'>
+              <p className='text-center text-2xl md:text-4xl md:font-light'>You have an empty cart!</p>
+              <img src='/images/emptyCart1.png' alt='emptyCart-logo' width='250' height='250' className='mx-auto rounded-2xl' />
+            </div>
+          }
 
           <div className='h-24 border-t-4 border-t-black border-dotted'>
 

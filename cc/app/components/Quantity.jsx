@@ -7,6 +7,7 @@ import { useCartContext } from '../context/CartContext'
 function Quantity(props) {
   const [quantity, setQuantity] = useState(1)
   const {cartCount, setCartCount} = useCartContext();
+  const {cartItems, setCartItems} = useCartContext();
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
   };
@@ -19,6 +20,7 @@ function Quantity(props) {
     
     const addToCart = () => {
         setCartCount(cartCount + quantity)
+        setCartItems([...cartItems, {title: props.title, price: props.price, image: props.image, quantity: quantity}])
     }
 
     let stripePromise
