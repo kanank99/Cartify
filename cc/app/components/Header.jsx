@@ -12,6 +12,7 @@ function Header() {
   const [showCart, setShowCart] = useState(false)
   const {cartItems, setCartItems} = useCartContext();
   const {subtotal, setSubtotal} = useCartContext();
+  const {lastProductVisited} = useCartContext();
 
   const removeFromCart = (index) => {
     setCartCount(cartCount - cartItems[index].quantity)
@@ -36,7 +37,7 @@ function Header() {
           </Link>
           <div className='flex gap-7 items-center'>
               <Link className='hidden sm:block font-medium' href={{pathname: `/categories/all`,}}>CATEGORIES</Link>
-              <a className='hidden sm:block font-medium' href="/">PRODUCT PAGE</a>
+              <Link className='hidden sm:block font-medium' href={`/product/${lastProductVisited}`}>PRODUCT PAGE</Link>
               <img className='sm:hidden' src='/images/dropdown-icon.png' alt='Dropdown-Icon' width='30' height='30' />
               <div className='relative' onClick={() => setShowCart(!showCart)}>
                 <img src='/images/cartIcon.png' alt='Cart-Icon' width='30' height='30'/>
@@ -54,7 +55,7 @@ function Header() {
       {showCart ?
       <>
       <div className='fixed top-0 left-0 w-full h-screen bg-black opacity-30 z-20' onClick={() => setShowCart(!showCart)}></div>
-      <div className=' h-screen sm:w-2/3 md:w-1/3 w-full bg-white border border-l-black right-0 fixed z-50 p-5'>
+      <div className=' h-screen sm:w-2/3 lg:w-2/4 xl:w-1/3 w-full bg-white border border-l-black right-0 fixed z-50 p-5'>
         <div className='flex flex-col h-full justify-between'>
           <div className='flex justify-between'>
             <p className='sm:text-2xl'>You have {cartCount} items in your cart</p>
@@ -62,21 +63,21 @@ function Header() {
           </div>
 
           { cartCount > 0 ?
-          <div className='flex flex-col gap-5 overflow-y-scroll'>
+          <div className='flex flex-col gap-5 overflow-y-scroll pt-4 pb-4'>
             {cartItems.map((item) => (
-              <div className='flex justify-between items-center gap-5'>
+              <div className='flex justify-between items-center gap-5 bg-[#f2f2f2] border border-black rounded'>
                 <div className='flex gap-5 items-center'>
-                  <img src={item.image} alt='cart-item' width='100' height='100' />
+                  <img src={item.image} alt='cart-item' width='100' height='100' className='rounded border-r border-black'/>
                   <div className='flex flex-col'>
                     <p className='font-sanchez font-medium text-[#e78200] text-base sm:text-xl'>{item.title}</p>
                     <p className='font-sanchez font-light text-sm sm:text-base'>${item.price}</p>
                   </div>
                 </div>
-                <div className='flex flex-col gap-5'>
+                <div className='flex flex-col gap-3 p-4'>
                   <div className='flex gap-5 items-center'>
-                    <button className='bg-[#e78200] text-white font-sanchez font-medium text-base sm:text-xl p-2 rounded' onClick={() => setCartCount(cartCount - 1)}>-</button>
+                    <button className='bg-[#e78200] text-white font-sanchez font-medium text-base sm:text-xl p-2 rounded h-6 flex justify-center items-center' onClick={() => setCartCount(cartCount - 1)}>-</button>
                     <p className='font-sanchez font-medium text-base sm:text-xl'>{item.quantity}</p>
-                    <button className='bg-[#e78200] text-white font-sanchez font-medium text-base sm:text-xl p-2 rounded' onClick={() => setCartCount(cartCount + 1)}>+</button>
+                    <button className='bg-[#e78200] text-white font-sanchez font-medium text-base sm:text-xl p-2 rounded h-6 flex justify-center items-center' onClick={() => setCartCount(cartCount + 1)}>+</button>
                   </div>
                   <button className='text-[#e78200] font-sanchez font-medium text-base sm:text-xl' onClick={() => removeFromCart(cartItems.indexOf(item))}>Remove</button>
                 </div>
@@ -84,18 +85,19 @@ function Header() {
               </div>
             ))}
           </div>
-          : <div className='flex flex-col gap-10'>
+          : <div className='flex flex-col gap-10 items-center'>
               <p className='text-center text-2xl md:text-4xl md:font-light'>You have an empty cart!</p>
               <img src='/images/emptyCart1.png' alt='emptyCart-logo' width='250' height='250' className='mx-auto rounded-2xl' />
+              <Link href='/categories/all'><button className='bg-[#e78200] text-white font-sanchez font-medium text-base sm:text-xl p-2 rounded-lg sm:font-light tracking-wide' onClick={() => setShowCart(false)}>SHOP NOW</button></Link>
             </div>
           }
 
-          <div className='h-24 border-t-4 border-t-black border-dotted p-4 flex justify-between'>
+          <div className='h-24 border-t-4 border-t-black border-dotted p-4 flex justify-between items-center'>
             <div className='flex flex-col gap-2'>
               <p className='font-sanchez font-medium text-[#e78200] text-base sm:text-xl'>Subtotal</p>
               <p className='font-sanchez font-medium text-base sm:text-xl'>${subtotal}</p>
             </div>
-            <button className='bg-[#e78200] text-white font-sanchez font-medium text-base sm:text-xl p-2 rounded'>CHECKOUT</button>
+            <button className='bg-[#e78200] text-white font-sanchez font-medium text-base sm:text-xl p-2 rounded-lg sm:font-light tracking-wide h-12'>CHECKOUT</button>
           </div>
         </div>
       </div>

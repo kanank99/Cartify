@@ -9,6 +9,7 @@ function Quantity(props) {
   const {cartCount, setCartCount} = useCartContext();
   const {cartItems, setCartItems} = useCartContext();
   const {subtotal, setSubtotal} = useCartContext();
+  const {lastProductVisited, setLastProductVisited} = useCartContext();
   const incrementQuantity = () => {
     setQuantity(quantity + 1);
   };
@@ -67,6 +68,10 @@ function Quantity(props) {
         console.warn('Error:', error)
       }
     }
+
+    if (lastProductVisited !== props.productId) {
+        setLastProductVisited(props.productId)
+      }
 
   return (
     <>

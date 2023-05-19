@@ -1,7 +1,4 @@
-'use client'
-
 import Quantity from "@/app/components/Quantity"
-
 
 export default async function Home({ params }) {
   async function getProduct() {
@@ -93,11 +90,6 @@ export default async function Home({ params }) {
       price: 'price_1N6HRpLVw56XMgIA2LllZ1EK',
     }
   } 
-
-
-
-
-
 
 
   return (
