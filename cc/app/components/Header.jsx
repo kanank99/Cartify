@@ -25,6 +25,23 @@ function Header() {
     setCartItems([...cartItems])
   }
 
+  const addAnother = (index) => {
+    cartItems[index].quantity += 1
+    setCartCount(cartCount + 1)
+    setSubtotal((Number(subtotal) + Number(cartItems[index].price)).toFixed(2))
+    setCartItems([...cartItems])
+  }
+
+  const removeOne = (index) => {
+    cartItems[index].quantity -= 1
+    setCartCount(cartCount - 1)
+    setSubtotal((Number(subtotal) - Number(cartItems[index].price)).toFixed(2))
+    setCartItems([...cartItems])
+    if (cartItems[index].quantity === 0) {
+      removeFromCart(index)
+    }
+  }
+
   return (
     <>
       <div className='bg-white h-28 pl-8 pr-8 w-full flex justify-center shadow-[0_15px_10px_-15px_#111;] fixed z-10'>
@@ -75,9 +92,9 @@ function Header() {
                 </div>
                 <div className='flex flex-col gap-3 p-4'>
                   <div className='flex gap-5 items-center'>
-                    <button className='bg-[#e78200] text-white font-sanchez font-medium text-base sm:text-xl p-2 rounded h-6 flex justify-center items-center' onClick={() => setCartCount(cartCount - 1)}>-</button>
+                    <button className='bg-[#e78200] text-white font-sanchez font-medium text-base sm:text-xl p-2 rounded h-6 flex justify-center items-center' onClick={() => removeOne(cartItems.indexOf(item))}>-</button>
                     <p className='font-sanchez font-medium text-base sm:text-xl'>{item.quantity}</p>
-                    <button className='bg-[#e78200] text-white font-sanchez font-medium text-base sm:text-xl p-2 rounded h-6 flex justify-center items-center' onClick={() => setCartCount(cartCount + 1)}>+</button>
+                    <button className='bg-[#e78200] text-white font-sanchez font-medium text-base sm:text-xl p-2 rounded h-6 flex justify-center items-center' onClick={() => addAnother(cartItems.indexOf(item))}>+</button>
                   </div>
                   <button className='text-[#e78200] font-sanchez font-medium text-base sm:text-xl' onClick={() => removeFromCart(cartItems.indexOf(item))}>Remove</button>
                 </div>
