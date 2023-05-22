@@ -83,8 +83,8 @@ function Header() {
         <div className='max-w-screen-xl flex justify-between items-center w-full sm:pl-12 sm:pr-12'>
           <Link href={`/`}>
             <div className='flex gap-3 items-center'>
-              <img src="/images/cartifyCartLogo.png" alt="Logo" width='30' height='30'/>
-              <p className='font-sanchez font-medium text-[#e78200] text-base sm:text-xl'>Cartify</p>
+              <img src="/images/cartifyCartLogo.png" alt="Logo" width='40' height='40'/>
+              <p className='font-sanchez font-medium text-[#e78200] text-xl sm:text-2xl'>Cartify</p>
             </div>
           </Link>
           <div className='flex gap-7 items-center'>
