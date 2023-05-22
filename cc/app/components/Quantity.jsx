@@ -30,7 +30,7 @@ function Quantity(props) {
             return
         }
         setCartCount(cartCount + quantity)
-        setCartItems([...cartItems, {title: props.title, price: props.price, image: props.image, quantity: quantity}])
+        setCartItems([...cartItems, {title: props.title, price: props.price, image: props.image, quantity: quantity, productCode: props.productCode}])
         setSubtotal((Number(subtotal) + Number(props.price * quantity)).toFixed(2))
 
 
@@ -38,6 +38,8 @@ function Quantity(props) {
         
         
     }
+
+    // Stripe
 
     let stripePromise
 

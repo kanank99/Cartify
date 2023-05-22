@@ -4,6 +4,7 @@ import React from 'react'
 import { useState } from 'react'
 import Link from 'next/link'
 import { useCartContext } from '../context/CartContext'
+import { loadStripe } from "@stripe/stripe-js"
 
 
 function Header() {
@@ -40,6 +41,40 @@ function Header() {
     if (cartItems[index].quantity === 0) {
       removeFromCart(index)
     }
+  }
+
+// Stripe
+
+  let stripePromise
+
+  const getStripe = () => {
+    if (!stripePromise) {
+      stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY)
+    }
+    return stripePromise
+  }
+
+
+  const item = cartItems.map((item) => {
+    return {price: item.productCode, quantity: item.quantity}
+  })
+
+  const checkoutOptions = {
+    lineItems: item,
+    mode: 'payment',
+    successUrl: `${window.location.origin}/success`,
+    cancelUrl: `${window.location.origin}/cancel`,
+  }
+
+  const redirectToCheckout = async () => {
+    console.log(cartItems)
+    console.log(item)
+    const stripe = await getStripe()
+    const { error } = await stripe.redirectToCheckout(checkoutOptions)
+    if (error) {
+      console.warn('Error:', error)
+    }
+    
   }
 
   return (
@@ -114,7 +149,7 @@ function Header() {
               <p className='font-sanchez font-medium text-[#e78200] text-base sm:text-xl'>Subtotal</p>
               <p className='font-sanchez font-medium text-base sm:text-xl'>${subtotal}</p>
             </div>
-            <button className='bg-[#e78200] text-white font-sanchez font-medium text-base sm:text-xl p-2 rounded-lg sm:font-light tracking-wide h-12'>CHECKOUT</button>
+            <button className='bg-[#e78200] text-white font-sanchez font-medium text-base sm:text-xl p-2 rounded-lg sm:font-light tracking-wide h-12' onClick={redirectToCheckout}>CHECKOUT</button>
           </div>
         </div>
       </div>
