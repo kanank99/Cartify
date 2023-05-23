@@ -13,8 +13,8 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className='box-border bg-white'>
-      <body className='flex flex-col items-center bg-white'>
+    <html lang="en" className='box-border'>
+      <body className='flex flex-col items-center bg-white h-full'>
         <CartContextProvider>
           <Header />
           {children}

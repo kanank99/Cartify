@@ -1,4 +1,5 @@
 import CatergoryBoxes from './components/CatergoryBoxes'
+import Trending from './components/Trending'
 
 export default function Home() {
 
@@ -6,6 +7,7 @@ export default function Home() {
     <div className='w-full h-screen pt-28 bg-white'>
       <div className='max-w-screen-xl m-auto'>
         <CatergoryBoxes />
+        <Trending />
       </div>
     </div>
   )

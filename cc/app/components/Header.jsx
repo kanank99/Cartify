@@ -67,8 +67,6 @@ function Header() {
   }
 
   const redirectToCheckout = async () => {
-    console.log(cartItems)
-    console.log(item)
     const stripe = await getStripe()
     const { error } = await stripe.redirectToCheckout(checkoutOptions)
     if (error) {
