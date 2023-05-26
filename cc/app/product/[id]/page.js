@@ -95,7 +95,7 @@ export default async function Home({ params }) {
 
   return (
     <>
-      <div className='w-full max-w-screen-xl pt-28 flex flex-col h-screen mt-8'>
+      <div className='w-full max-w-screen-xl pt-28 flex flex-col h-full mt-8'>
           <div className="flex flex-col items-center sm:flex-row w-full gap-8">
               <h1 className="sm:hidden text-center text-2xl font-extrabold pl-4 pr-4">{product.title}</h1>
               <div className="flex flex-1 justify-center">
