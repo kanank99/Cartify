@@ -77,17 +77,17 @@ function Header() {
 
   return (
     <>
-      <div className='bg-white h-28 pl-8 pr-8 w-full flex justify-center shadow-[0_15px_10px_-15px_#111;] fixed z-10'>
+      <div className='bg-white h-28 pl-8 pr-8 w-full flex justify-center shadow-[0_15px_10px_-15px_#111;] fixed z-20'>
         <div className='max-w-screen-xl flex justify-between items-center w-full sm:pl-12 sm:pr-12'>
           <Link href={`/`}>
             <div className='flex gap-3 items-center'>
               <img src="/images/cartifyCartLogo.png" alt="Logo" width='40' height='40'/>
-              <p className='font-sanchez font-medium text-[#e78200] text-xl sm:text-2xl'>Cartify</p>
+              <p className='font-sanchez font-bold text-[#e78200] text-xl sm:text-2xl'>CARTIFY</p>
             </div>
           </Link>
           <div className='flex gap-7 items-center'>
-              <Link className='hidden sm:block font-medium' href={{pathname: `/categories/all`,}}>CATEGORIES</Link>
-              <Link className='hidden sm:block font-medium' href={`/product/${lastProductVisited}`}>PRODUCT PAGE</Link>
+              <Link className='hidden sm:block font-medium text-xl' href={{pathname: `/categories/all`,}}>CATEGORIES</Link>
+              <Link className='hidden sm:block font-medium text-xl' href={`/product/${lastProductVisited}`}>PRODUCT PAGE</Link>
               <img className='sm:hidden' src='/images/dropdown-icon.png' alt='Dropdown-Icon' width='30' height='30' />
               <div className='relative' onClick={() => setShowCart(!showCart)}>
                 <img src='/images/cartIcon.png' alt='Cart-Icon' width='30' height='30'/>
