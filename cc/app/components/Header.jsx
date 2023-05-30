@@ -11,6 +11,7 @@ function Header() {
 
   const {cartCount, setCartCount} = useCartContext();
   const [showCart, setShowCart] = useState(false)
+  const [showMenu, setShowMenu] = useState(false)
   const {cartItems, setCartItems} = useCartContext();
   const {subtotal, setSubtotal} = useCartContext();
   const {lastProductVisited} = useCartContext();
@@ -88,7 +89,7 @@ function Header() {
           <div className='flex gap-7 items-center'>
               <Link className='hidden sm:block font-medium text-xl' href={{pathname: `/categories/all`,}}>CATEGORIES</Link>
               <Link className='hidden sm:block font-medium text-xl' href={`/product/${lastProductVisited}`}>PRODUCT PAGE</Link>
-              <img className='sm:hidden' src='/images/dropdown-icon.png' alt='Dropdown-Icon' width='30' height='30' />
+              <img className='sm:hidden' onClick={() => setShowMenu(!showMenu)} src='/images/dropdown-icon.png' alt='Dropdown-Icon' width='30' height='30' />
               <div className='relative' onClick={() => setShowCart(!showCart)}>
                 <img src='/images/cartIcon.png' alt='Cart-Icon' width='30' height='30'/>
                 { cartCount > 0 ?
@@ -102,6 +103,25 @@ function Header() {
           </div>
         </div>
       </div>
+      {showMenu ?
+      <div className='fixed top-0 left-0 w-full h-screen bg-white z-20' onClick={() => setShowMenu(!showMenu)}>
+        <button className='absolute top-7 right-10' onClick={() => setShowCart(!showMenu)}><img src='/images/closeIcon-light.png' alt='close-cart' width='50' height='50' /></button>
+        <div className='flex flex-col h-full gap-16 items-center justify-center p-4'>
+          <Link className='font-medium text-2xl' href={{pathname: `/`,}}>HOME</Link>
+          <Link className='font-medium text-2xl' href={{pathname: `/categories/all`,}}>CATEGORIES</Link>
+          <Link className='font-medium text-2xl' href={`/product/${lastProductVisited}`}>PRODUCT PAGE</Link>
+          <div className='relative' onClick={() => setShowCart(!showCart)}>
+                <img src='/images/cartIcon.png' alt='Cart-Icon' width='30' height='30'/>
+                { cartCount > 0 ?
+                <div className='absolute bottom-5 left-5 h-4 w-4 rounded-full bg-orange-500 flex items-center justify-center'>
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
+                  <p className='text-white text-xs text-center font-light'>{cartCount}</p>
+                </div>
+                : null}
+              </div>
+        </div>
+      </div>
+      : null}
       {showCart ?
       <>
       <div className='fixed top-0 left-0 w-full h-screen bg-black opacity-30 z-20' onClick={() => setShowCart(!showCart)}></div>
