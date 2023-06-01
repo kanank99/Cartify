@@ -28,17 +28,19 @@ async function Trending() {
 
         <div className="flex gap-5 mt-4 w-full max-w-[1185px] overflow-scroll z-10">
             {trendingProducts.map((product) => (
-                <Link href={`/product/${product.id}`}>
-                    <div key={product.id} className='flex flex-col place-content-between items-center gap-3 p-4 bg-white rounded border-2 border-[#cbcbcb] transition duration-200 ease-in-out transform hover:border-[#e78200d1] w-72 h-full'>
-                        <div className="h-60 bg-white">
-                            <Image className="w-full h-full p-4" width='1000' height='1000' src={product.image} alt="product-image" />
+                <div key={product.id}>
+                    <Link href={`/product/${product.id}`}>
+                        <div className='flex flex-col place-content-between items-center gap-3 p-4 bg-white rounded border-2 border-[#cbcbcb] transition duration-200 ease-in-out transform hover:border-[#e78200d1] w-72 h-full'>
+                            <div className="h-60 bg-white">
+                                <Image className="w-full h-full p-4" width='1000' height='1000' src={product.image} alt="product-image" />
+                            </div>
+                            <div className="self-start">
+                                <p className='font-light text-sm bg-white'>{product.title}</p>
+                                <p className='text-xl font-medium bg-white'>${product.price}</p>
+                            </div>
                         </div>
-                        <div className="self-start">
-                            <p className='font-light text-sm bg-white'>{product.title}</p>
-                            <p className='text-xl font-medium bg-white'>${product.price}</p>
-                        </div>
-                    </div>
-                </Link>
+                    </Link>
+                </div>
             ))}
         </div>
     </div>

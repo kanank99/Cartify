@@ -100,7 +100,7 @@ export default async function Home({ params }) {
           <div className="flex flex-col items-center sm:flex-row w-full gap-8">
               <h1 className="sm:hidden text-center text-2xl font-extrabold pl-4 pr-4">{product.title}</h1>
               <div className="flex flex-1 justify-center">
-                  <Image className=" w-2/3" width='1000' height='1000' src={product.image} />
+                  <Image alt="product-image" className=" w-2/3" width='1000' height='1000' src={product.image} />
               </div>
               <div className="flex flex-1 flex-col justify-around gap-4 m-4 p-6 bg-gradient-to-r from-orange-500 to-yellow-500 rounded">
                   <h2 className="hidden sm:block sm:font-extrabold sm:text-center sm:text-2xl">{product.title}</h2>

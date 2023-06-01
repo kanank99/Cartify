@@ -136,7 +136,7 @@ function Header() {
           { cartCount > 0 ?
           <div className='flex flex-col gap-5 overflow-y-scroll pt-4 pb-4'>
             {cartItems.map((item) => (
-              <div className='flex justify-between items-center gap-5 bg-[#f2f2f2] border border-black rounded'>
+              <div key={item.productCode} className='flex justify-between items-center gap-5 bg-[#f2f2f2] border border-black rounded'>
                 <div className='flex gap-5 items-center'>
                   <Image src={item.image} alt='cart-item' width='100' height='100' className='rounded border-r border-black'/>
                   <div className='flex flex-col'>
