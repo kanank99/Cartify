@@ -1,11 +1,9 @@
 'use client'
 
 import React from 'react'
-import { useState } from 'react'
 import Link from 'next/link'
 
 function CategoryFilter(props) {
-  const [activeButtonIndex, setActiveButtonIndex] = useState(null);
   const unactivated = 'border border-amber-600 hover:bg-[#e78200d1] rounded pl-4 pr-4 pt-1 pb-1'
   const activated = 'border border-amber-600 bg-[#e78200d1] rounded pl-4 pr-4 pt-1 pb-1'
   return (

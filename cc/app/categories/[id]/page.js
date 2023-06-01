@@ -1,10 +1,15 @@
-import RenderCategory from '@/app/components/renderCategory'
-import RenderAll from '@/app/components/renderAll'
+import RenderCategory from '@/app/components/RenderCategory'
+import RenderAll from '@/app/components/RenderAll'
 import CategoryFilter from '@/app/components/CategoryFilter'
 import Link from 'next/link'
 
 export default function Home({ params }) {
-  const category = params.id.toUpperCase()
+  let category = params.id.toUpperCase()
+  if (category == "MEN'S%20CLOTHING") {
+    category = "MEN'S CLOTHING"
+  } else if (category == "WOMEN'S%20CLOTHING") {
+    category = "WOMEN'S CLOTHING"
+  }
   return (
     <>
       <div className='w-full max-w-screen-xl pt-28 flex flex-col h-full'>

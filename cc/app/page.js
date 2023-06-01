@@ -1,7 +1,6 @@
 import CatergoryBoxes from './components/CatergoryBoxes'
 import Features from './components/Features'
 import Trending from './components/Trending'
-import Footer from './components/Footer'
 
 export default function Home() {
 
