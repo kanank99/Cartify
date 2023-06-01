@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 async function Trending() {
   async function getAllProducts() {
@@ -19,7 +20,7 @@ async function Trending() {
             <div className='flex gap-2 items-center'>
                 <p className=' text-2xl'>Scroll</p>
                 <div className=''>
-                    <img src="/images/scroll.png" alt="scroll-right" width='50' height='50' className='rotate-90'/>
+                    <Image src="/images/scroll.png" alt="scroll-right" width='50' height='50' className='rotate-90'/>
                 </div>
             </div>
         </div>
@@ -30,7 +31,7 @@ async function Trending() {
                 <Link href={`/product/${product.id}`}>
                     <div key={product.id} className='flex flex-col place-content-between items-center gap-3 p-4 bg-white rounded border-2 border-[#cbcbcb] transition duration-200 ease-in-out transform hover:border-[#e78200d1] w-72 h-full'>
                         <div className="h-60 bg-white">
-                            <img className="w-full h-full p-4" src={product.image} alt="product-img" />
+                            <Image className="w-full h-full p-4" width='1000' height='1000' src={product.image} alt="product-image" />
                         </div>
                         <div className="self-start">
                             <p className='font-light text-sm bg-white'>{product.title}</p>

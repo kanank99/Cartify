@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 function Features() {
@@ -7,7 +8,6 @@ function Features() {
         <div className='flex flex-col sm:flex-row w-full'>
             <div className='flex flex-col gap-3 items-center'>
                 <div className='flex gap-5 w-4/5 p-3 border border-orange-400 bg-orange-100 rounded'>
-                    {/* <img src="/images/ui-icon.png" alt="secure" className=' '/> */}
                     <div>
                         <p className='text-2xl font-bold text-center'>User Interface 💻</p>
                         <p className='text-xl'>Our website is designed to be easy to use and navigate.</p>
@@ -27,7 +27,7 @@ function Features() {
                 </div>
             </div>
             <div className='flex items-center justify-center'>
-                <img src="/images/features.png" alt="secure" width='500' height='500'/>
+                <Image src="/images/features.png" alt="secure" width='500' height='500'/>
             </div>
             <div className='flex flex-col gap-3 items-center'>
                 <div className='flex gap-5 w-4/5 p-3 border border-orange-400 bg-orange-100 rounded'>

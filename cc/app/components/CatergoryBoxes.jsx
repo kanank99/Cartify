@@ -17,11 +17,11 @@ function CatergoryBoxes() {
         <div className='flex gap-3 sm:flex-col sm:w-4/12 sm:pr-8'>
             <Link href={`/categories/men's clothing`} className='relative h-64 bg-[url("/images/mensclothing.png")] bg-cover w-full sm:h-1/2 border-2 transition duration-500 ease-in-out transform hover:border-black'>
               <div className='bg-black opacity-30 transition duration-500 ease-in-out transform hover:opacity-5 w-full h-full'></div>
-              <p className='absolute bottom-2 left-2 text-white text-2xl md:text-4xl z-10'>Men's</p>
+              <p className='absolute bottom-2 left-2 text-white text-2xl md:text-4xl z-10'>Men&apos;s</p>
             </Link>
             <Link href={`/categories/women's clothing`} className='relative h-64 bg-[url("/images/womensclothing.png")] bg-cover w-full sm:h-1/2 border-2 transition duration-500 ease-in-out transform hover:border-black'>
               <div className='bg-black opacity-30 transition duration-500 ease-in-out transform hover:opacity-5 w-full h-full'></div>
-              <p className='absolute bottom-2 left-2 text-white text-2xl md:text-4xl brightness-150'>Women's</p>
+              <p className='absolute bottom-2 left-2 text-white text-2xl md:text-4xl brightness-150'>Women&apos;s</p>
             </Link>
         </div>
     </div>

@@ -18,10 +18,10 @@ function CategoryFilter(props) {
           <div className={props.id == 'jewelery' ? activated : unactivated}>Jewelery</div>
         </Link>
         <Link href={`/categories/men's clothing`}>
-          <div className={props.id == "men's%20clothing" ? activated : unactivated}>Men's</div>
+          <div className={props.id == "men's%20clothing" ? activated : unactivated}>Men&apos;s</div>
         </Link>
         <Link href={`/categories/women's clothing`}>
-          <div className={props.id == "women's%20clothing" ? activated : unactivated}>Women's</div>
+          <div className={props.id == "women's%20clothing" ? activated : unactivated}>Women&apos;s</div>
         </Link>
     </div>
   )

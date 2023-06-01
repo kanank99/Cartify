@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import React from 'react'
 
 function Footer() {
@@ -8,7 +9,7 @@ function Footer() {
                 <h1 className='text-xl sm:text-4xl font-bold sm:font-light text-center text-[#181919]'>Get access to exclusive updates</h1>
                 <div className='flex justify-center gap-3 mt-4 w-full'>
                     <input type="text" placeholder='jane.smith@example.com' className='border-2 border-[#181919] rounded w-3/4 sm:w-96 h-12 p-2'/>
-                    <div className='bg-[#181919] rounded flex justify-center items-center h-12 w-12 hover:cursor-pointer hover:bg-slate-800 transition duration-200 ease-in-out transform'><img src="/images/paper-airplain-white.png" alt="send" width='22' height='22'/></div>
+                    <div className='bg-[#181919] rounded flex justify-center items-center h-12 w-12 hover:cursor-pointer hover:bg-slate-800 transition duration-200 ease-in-out transform'><Image src="/images/paper-airplain-white.png" alt="send" width='22' height='22'/></div>
                 </div>
             </div>
         </div>
@@ -27,10 +28,10 @@ function Footer() {
                 <p className='text-slate-200 text-xs sm:text-lg font-light self-start hover:cursor-pointer'>Privacy Policy</p>
                 <p className='text-slate-200 text-xs sm:text-lg font-light self-start hover:cursor-pointer'>Terms & Conditions</p>
                 <div className='flex gap-3 self-start'>
-                    <img src="/images/facebook-icon.svg" alt="facebook" className='hover:cursor-pointer md:h-7 md:w-7'/>
-                    <img src="/images/instagram-icon.svg" alt="instagram" className='hover:cursor-pointer md:h-7 md:w-7'/>
-                    <img src="/images/twitter-icon.svg" alt="twitter" className='hover:cursor-pointer md:h-7 md:w-7'/>
-                    <img src='/images/linkedin-icon.svg' alt='linkedin' className='hover:cursor-pointer md:h-7 md:w-7'/>
+                    <Image src="/images/facebook-icon.svg" alt="facebook" width={20} height={20} className='hover:cursor-pointer md:h-7 md:w-7'/>
+                    <Image src="/images/instagram-icon.svg" alt="instagram" width={20} height={20} className='hover:cursor-pointer md:h-7 md:w-7'/>
+                    <Image src="/images/twitter-icon.svg" alt="twitter" width={20} height={20} className='hover:cursor-pointer md:h-7 md:w-7'/>
+                    <Image src='/images/linkedin-icon.svg' alt='linkedin' width={20} height={20} className='hover:cursor-pointer md:h-7 md:w-7'/>
                 </div>
             </div>
         </div>

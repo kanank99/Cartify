@@ -5,6 +5,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useCartContext } from '../context/CartContext'
 import { loadStripe } from "@stripe/stripe-js"
+import Image from 'next/image'
 
 
 function Header() {
@@ -82,16 +83,16 @@ function Header() {
         <div className='max-w-screen-xl flex justify-between items-center w-full sm:pl-12 sm:pr-12'>
           <Link href={`/`}>
             <div className='flex gap-3 items-center'>
-              <img src="/images/cartifyCartLogo.png" alt="Logo" width='40' height='40'/>
+              <Image src="/images/cartifyCartLogo.png" alt="Logo" width='40' height='40'/>
               <p className='font-sanchez font-bold text-[#e78200] text-xl sm:text-2xl'>CARTIFY</p>
             </div>
           </Link>
           <div className='flex gap-7 items-center'>
               <Link className='hidden sm:block font-medium text-xl' href={{pathname: `/categories/all`,}}>CATEGORIES</Link>
               <Link className='hidden sm:block font-medium text-xl' href={`/product/${lastProductVisited}`}>PRODUCT PAGE</Link>
-              <img className='sm:hidden' onClick={() => setShowMenu(!showMenu)} src='/images/dropdown-icon.png' alt='Dropdown-Icon' width='30' height='30' />
+              <Image className='sm:hidden' onClick={() => setShowMenu(!showMenu)} src='/images/dropdown-icon.png' alt='Dropdown-Icon' width='30' height='30' />
               <div className='relative' onClick={() => setShowCart(!showCart)}>
-                <img src='/images/cartIcon.png' alt='Cart-Icon' width='30' height='30'/>
+                <Image src='/images/cartIcon.png' alt='Cart-Icon' width='30' height='30'/>
                 { cartCount > 0 ?
                 <div className='absolute bottom-5 left-5 h-4 w-4 rounded-full bg-orange-500 flex items-center justify-center'>
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
@@ -105,13 +106,13 @@ function Header() {
       </div>
       {showMenu ?
       <div className='fixed top-0 left-0 w-full h-screen bg-white z-20' onClick={() => setShowMenu(!showMenu)}>
-        <button className='absolute top-7 right-10' onClick={() => setShowCart(!showMenu)}><img src='/images/closeIcon-light.png' alt='close-cart' width='50' height='50' /></button>
+        <button className='absolute top-7 right-10' onClick={() => setShowCart(!showMenu)}><Image src='/images/closeIcon-light.png' alt='close-cart' width='50' height='50' /></button>
         <div className='flex flex-col h-full gap-16 items-center justify-center p-4'>
           <Link className='font-medium text-2xl' href={{pathname: `/`,}}>HOME</Link>
           <Link className='font-medium text-2xl' href={{pathname: `/categories/all`,}}>CATEGORIES</Link>
           <Link className='font-medium text-2xl' href={`/product/${lastProductVisited}`}>PRODUCT PAGE</Link>
           <div className='relative' onClick={() => setShowCart(!showCart)}>
-                <img src='/images/cartIcon.png' alt='Cart-Icon' width='30' height='30'/>
+                <Image src='/images/cartIcon.png' alt='Cart-Icon' width='30' height='30'/>
                 { cartCount > 0 ?
                 <div className='absolute bottom-5 left-5 h-4 w-4 rounded-full bg-orange-500 flex items-center justify-center'>
                   <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-orange-500 opacity-75"></span>
@@ -129,7 +130,7 @@ function Header() {
         <div className='flex flex-col h-full justify-between'>
           <div className='flex justify-between'>
             <p className='sm:text-2xl'>You have {cartCount} items in your cart</p>
-            <button onClick={() => setShowCart(!showCart)}><img src='/images/closeIcon-light.png' alt='close-cart' width='30' height='30' /></button>
+            <button onClick={() => setShowCart(!showCart)}><Image src='/images/closeIcon-light.png' alt='close-cart' width='30' height='30' /></button>
           </div>
 
           { cartCount > 0 ?
@@ -137,7 +138,7 @@ function Header() {
             {cartItems.map((item) => (
               <div className='flex justify-between items-center gap-5 bg-[#f2f2f2] border border-black rounded'>
                 <div className='flex gap-5 items-center'>
-                  <img src={item.image} alt='cart-item' width='100' height='100' className='rounded border-r border-black'/>
+                  <Image src={item.image} alt='cart-item' width='100' height='100' className='rounded border-r border-black'/>
                   <div className='flex flex-col'>
                     <p className='font-sanchez font-medium text-[#e78200] text-base sm:text-xl'>{item.title}</p>
                     <p className='font-sanchez font-light text-sm sm:text-base'>${item.price}</p>
@@ -157,7 +158,7 @@ function Header() {
           </div>
           : <div className='flex flex-col gap-10 items-center'>
               <p className='text-center text-2xl md:text-4xl md:font-light'>You have an empty cart!</p>
-              <img src='/images/emptyCart1.png' alt='emptyCart-logo' width='250' height='250' className='mx-auto rounded-2xl' />
+              <Image src='/images/emptyCart1.png' alt='emptyCart-logo' width='250' height='250' className='mx-auto rounded-2xl' />
               <Link href='/categories/all'><button className='bg-[#e78200] text-white font-sanchez font-medium text-base sm:text-xl p-2 rounded-lg sm:font-light tracking-wide' onClick={() => setShowCart(false)}>SHOP NOW</button></Link>
             </div>
           }
