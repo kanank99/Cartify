@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { useCartContext } from '../context/CartContext'
 import { loadStripe } from "@stripe/stripe-js"
 import Image from 'next/image'
+import { useRouter } from 'next/navigation';
 
 
 function Header() {
@@ -16,6 +17,8 @@ function Header() {
   const {cartItems, setCartItems} = useCartContext();
   const {subtotal, setSubtotal} = useCartContext();
   const {lastProductVisited} = useCartContext();
+
+  const router = useRouter();
 
   const removeFromCart = (index) => {
     setCartCount(cartCount - cartItems[index].quantity)
@@ -61,11 +64,26 @@ function Header() {
     return {price: item.productCode, quantity: item.quantity}
   })
 
+  const goToSuccess = async () => {
+    router.push({
+      pathname: '/success',
+    })
+  }
+
+  const goToCancel = async () => {
+    router.push({
+      pathname: '/cancel',
+    })
+  }
+
+
   const checkoutOptions = {
     lineItems: item,
     mode: 'payment',
-    successUrl: `${window.location.origin}/success`,
-    cancelUrl: `${window.location.origin}/cancel`,
+    // successUrl: `${window.location.origin}/success`,
+    // cancelUrl: `${window.location.origin}/cancel`,
+    successUrl: goToSuccess,
+    cancelUrl: goToCancel,
   }
 
   const redirectToCheckout = async () => {
