@@ -101,7 +101,7 @@ function Header() {
         <div className='max-w-screen-xl flex justify-between items-center w-full sm:pl-12 sm:pr-12'>
           <Link href={`/`}>
             <div className='flex gap-3 items-center'>
-              <Image src="/images/cartifyCartLogo.png" alt="Logo" width='40' height='40'/>
+              <Image src="/images/cartifyCartLogo.png" className=' h-10 w-10' alt="Logo" width='100' height='100'/>
               <p className='font-sanchez font-bold text-[#e78200] text-xl sm:text-2xl'>CARTIFY</p>
             </div>
           </Link>
