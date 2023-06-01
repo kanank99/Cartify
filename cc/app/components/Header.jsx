@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useCartContext } from '../context/CartContext'
 import { loadStripe } from "@stripe/stripe-js"
 import Image from 'next/image'
-import { useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 
 
 function Header() {
@@ -18,7 +18,14 @@ function Header() {
   const {subtotal, setSubtotal} = useCartContext();
   const {lastProductVisited} = useCartContext();
 
-  const router = useRouter();
+  const pathname = usePathname();
+
+  console.log(pathname)
+
+  const underline = 'hidden md:block font-medium text-xl underline decoration-orange-400 decoration-4 underline-offset-4'
+  const noUnderline = 'hidden md:block font-medium text-xl'
+  const menuUnderline = 'font-medium text-2xl underline decoration-orange-400 decoration-4 underline-offset-4'
+  const menuNoUnderline = 'font-medium text-2xl'
 
   const removeFromCart = (index) => {
     setCartCount(cartCount - cartItems[index].quantity)
@@ -106,9 +113,10 @@ function Header() {
             </div>
           </Link>
           <div className='flex gap-7 items-center'>
-              <Link className='hidden sm:block font-medium text-xl' href={{pathname: `/categories/all`,}}>CATEGORIES</Link>
-              <Link className='hidden sm:block font-medium text-xl' href={`/product/${lastProductVisited}`}>PRODUCT PAGE</Link>
-              <Image className='sm:hidden' onClick={() => setShowMenu(!showMenu)} src='/images/dropdown-icon.png' alt='Dropdown-Icon' width='30' height='30' />
+              <Link className={pathname == '/' ? underline : noUnderline} href={{pathname: `/`,}}>HOME</Link>
+              <Link className={pathname.includes('categories') ? underline : noUnderline} href={{pathname: `/categories/all`,}}>CATEGORIES</Link>
+              <Link className={pathname.includes('product') ? underline : noUnderline} href={`/product/${lastProductVisited}`}>PRODUCT PAGE</Link>
+              <Image className='md:hidden' onClick={() => setShowMenu(!showMenu)} src='/images/dropdown-icon.png' alt='Dropdown-Icon' width='30' height='30' />
               <div className='relative' onClick={() => setShowCart(!showCart)}>
                 <Image src='/images/cartIcon.png' alt='Cart-Icon' width='30' height='30'/>
                 { cartCount > 0 ?
@@ -126,9 +134,9 @@ function Header() {
       <div className='fixed top-0 left-0 w-full h-screen bg-white z-20' onClick={() => setShowMenu(!showMenu)}>
         <button className='absolute top-7 right-10' onClick={() => setShowCart(!showMenu)}><Image src='/images/closeIcon-light.png' alt='close-cart' width='50' height='50' /></button>
         <div className='flex flex-col h-full gap-16 items-center justify-center p-4'>
-          <Link className='font-medium text-2xl' href={{pathname: `/`,}}>HOME</Link>
-          <Link className='font-medium text-2xl' href={{pathname: `/categories/all`,}}>CATEGORIES</Link>
-          <Link className='font-medium text-2xl' href={`/product/${lastProductVisited}`}>PRODUCT PAGE</Link>
+          <Link className={pathname == '/' ? menuUnderline : menuNoUnderline} href={{pathname: `/`,}}>HOME</Link>
+          <Link className={pathname.includes('categories') ? menuUnderline : menuNoUnderline} href={{pathname: `/categories/all`,}}>CATEGORIES</Link>
+          <Link className={pathname.includes('product') ? menuUnderline : menuNoUnderline} href={`/product/${lastProductVisited}`}>PRODUCT PAGE</Link>
           <div className='relative' onClick={() => setShowCart(!showCart)}>
                 <Image src='/images/cartIcon.png' alt='Cart-Icon' width='30' height='30'/>
                 { cartCount > 0 ?
